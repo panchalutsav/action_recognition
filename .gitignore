@@ -1,0 +1,6 @@
+*.png
+*.mp4
+/cluster_outputs
+/outputs 
+/video_outputs
+/video_outputs2
