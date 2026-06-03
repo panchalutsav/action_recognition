@@ -13,7 +13,8 @@ import pickle
 import random
 
 import decord
-import pandas as pd
+# import pandas as pd
+pd = None
 import torch
 
 
@@ -134,6 +135,7 @@ class VideoCaptionDatasetBase(torch.utils.data.Dataset):
                     end_frame = int(np.ceil(fps * end_timestamp))
                     self.samples.append((vid_path, start_frame, end_frame, narration, verb, noun))
             if self.dataset == 'ek100_mir':
+                import pandas as pd  # noqa: F811
                 self.metadata_sentence = pd.read_csv(metadata[:metadata.index('.csv')] + '_sentence.csv')
                 if 'train' in metadata:
                     self.relevancy_mat = pickle.load(open(osp.join(osp.dirname(metadata), 'relevancy', 'caption_relevancy_EPIC_100_retrieval_train.pkl'), 'rb'))
